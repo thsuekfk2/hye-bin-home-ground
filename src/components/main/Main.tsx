@@ -1,6 +1,7 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
+
 interface LogoProps {
   fontSize: number;
 }
@@ -37,7 +38,10 @@ export const Main = () => {
 
   return (
     <Wrap>
-      <Logo fontSize={fontSize}>LEE HYE BIN</Logo>
+      <Logo fontSize={fontSize}>
+        HELLO!
+        <br /> I'M HYE BIN.
+      </Logo>
     </Wrap>
   );
 };
@@ -60,7 +64,7 @@ const Wrap = styled.div`
   height: 100vh;
   position: sticky;
   top: 0;
-  background: url("Playlist Wallpaper_PC.jpg") no-repeat center;
+  background: url("wallpaper.jpg") no-repeat center;
   background-size: cover;
   &::before {
     content: "";
@@ -71,13 +75,12 @@ const Wrap = styled.div`
     width: 100%;
   }
 `;
-
 const Logo = styled.div<LogoProps>`
   height: 100%;
   display: flex;
-  justify-content: center;
+  padding-left: 10%;
   align-items: center;
-  color: white;
+  color: ${(props) => props.theme.text};
   transition: all 0.2s;
   opacity: ${(props) => props.fontSize == 70 && 0};
   font-size: ${(props) => props.fontSize}px;

@@ -45,7 +45,6 @@ export const Project = () => {
 
   return (
     <Wrap>
-      <Logo>Project</Logo>
       <BoxWrap ref={boxRef}>
         <AutoScrollBox />
         <AutoScrollBox />
@@ -58,15 +57,8 @@ export const Project = () => {
 const Wrap = styled.div`
   height: 100vh;
   width: 100%;
-  background-color: black;
   overflow: hidden;
-`;
-
-const Logo = styled.div`
   position: relative;
-  color: #fff;
-  font-size: 80px;
-  font-weight: 700;
 `;
 
 const BoxWrap = styled.div`
@@ -82,7 +74,7 @@ const AutoScrollBox = styled.div`
   flex: 1;
   min-width: 500px;
   height: 330px;
-  background-color: white;
+  background-color: ${(props) => props.theme.opacityBox};
   color: #444;
   border-radius: 10px;
 `;
