@@ -55,7 +55,7 @@ export const Project = () => {
 };
 
 const Wrap = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -67,14 +67,13 @@ const BoxWrap = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding-top: 50px;
+  padding: 50px 0;
 `;
 
 const AutoScrollBox = styled.div`
   flex: 1;
   min-width: 500px;
-  height: 330px;
-  background-color: ${(props) => props.theme.opacityBox};
-  color: #444;
+  height: 530px;
+  background-color: #ffffff37;
   border-radius: 10px;
 `;

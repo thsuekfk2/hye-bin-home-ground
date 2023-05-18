@@ -30,7 +30,7 @@ const MenuBox = styled.div`
   .bar-middle,
   .bar-bottom {
     height: 5px;
-    background: ${(props) => props.theme.text};
+    background: ${(props) => props.theme.color};
     border-radius: 5px;
     margin: 3px 0;
     transform-origin: left;
