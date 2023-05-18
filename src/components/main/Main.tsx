@@ -1,26 +1,27 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { LogoImage } from "../LogoImage";
 
 interface LogoProps {
   fontSize: number;
 }
 export const Main = () => {
   let prevScrollPosition = window.pageYOffset;
-  const [fontSize, setFontSize] = useState(80);
+  const [fontSize, setFontSize] = useState(60);
 
   const handleScroll = () => {
     const currentScrollPosition = window.pageYOffset;
 
     if (currentScrollPosition === 0) {
-      setFontSize(80);
+      setFontSize(60);
       return;
     }
-    if (currentScrollPosition > 60) {
-      setFontSize(70);
+    if (currentScrollPosition > 40) {
+      setFontSize(50);
     }
 
-    if (currentScrollPosition < 60) {
+    if (currentScrollPosition < 40) {
       const scrollDirection =
         currentScrollPosition > prevScrollPosition ? "down" : "up";
 
@@ -39,9 +40,15 @@ export const Main = () => {
   return (
     <Wrap>
       <Logo fontSize={fontSize}>
-        HELLO!
-        <br /> I'M HYE BIN.
+        FRONTEND
+        <br />
+        개발자
+        <br />
+        <div>
+          <span>이혜빈</span>입니다
+        </div>
       </Logo>
+      <LogoImage />
     </Wrap>
   );
 };
@@ -56,7 +63,7 @@ const textFade = keyframes`
   }
   100% {
     opacity: 1;
-    font-size: 80px;
+    font-size: 60px;
   }
 `;
 
@@ -64,26 +71,22 @@ const Wrap = styled.div`
   height: 100vh;
   position: sticky;
   top: 0;
-  background: url("wallpaper.jpg") no-repeat center;
-  background-size: cover;
-  &::before {
-    content: "";
-    background: linear-gradient(to top, white, transparent);
-    position: absolute;
-    bottom: 0;
-    height: 20%;
-    width: 100%;
-  }
+  background: #3f5130;
 `;
 const Logo = styled.div<LogoProps>`
-  height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding-left: 10%;
-  align-items: center;
-  color: ${(props) => props.theme.text};
+  height: 100%;
+  width: 50%;
+  color: ${(props) => props.theme.color};
   transition: all 0.2s;
-  opacity: ${(props) => props.fontSize == 70 && 0};
+  opacity: ${(props) => props.fontSize == 50 && 0};
   font-size: ${(props) => props.fontSize}px;
-  font-weight: 700;
+  font-weight: 200;
   animation: ${textFade} 2s linear alternate;
+  span {
+    font-weight: 700;
+  }
 `;
