@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { useState } from "react";
 import { darkTheme, lightTheme } from "../styles/theme";
+import { CustomCursor } from "./components/CustomCursor";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -29,6 +30,7 @@ function App() {
         <DarkModeToggle handleTheme={handleTheme} darkMode={darkMode} />
         <Emoji />
         <Menu />
+        <CustomCursor />
         <RouterProvider router={router} />
       </ThemeProvider>
     </>
