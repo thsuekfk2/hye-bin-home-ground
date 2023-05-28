@@ -1,17 +1,20 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-export const LogoImage = () => {
-  const canvasRef = useRef<any>(null);
+export const Logo3DImage = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const modelRef = useRef<THREE.Object3D>();
+  const animateRef = useRef<number | null>(null);
+
+  const [isRotation, setRotation] = useState(false);
 
   useEffect(() => {
     const scene = new THREE.Scene();
     const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
+      canvas: canvasRef.current!,
       antialias: true,
       alpha: true,
     });
@@ -35,16 +38,21 @@ export const LogoImage = () => {
     );
 
     const animate = () => {
-      requestAnimationFrame(animate);
+      animateRef.current = requestAnimationFrame(animate);
       renderer.render(scene, camera);
       const model = modelRef.current;
+
       if (model) {
-        model.rotation.y += 0.002; // 회전 속도 조절
+        setRotation(true);
+        model.rotation.y += 0.002;
       }
     };
 
     animate();
-  }, []);
+    return () => {
+      cancelAnimationFrame(animateRef.current!);
+    };
+  }, [isRotation]);
 
   return <CanvasImage ref={canvasRef}></CanvasImage>;
 };
@@ -67,4 +75,5 @@ const CanvasImage = styled.canvas`
   position: absolute;
   top: 50px;
   right: 50px;
+  cursor: pointer;
 `;
