@@ -5,8 +5,9 @@ import { AiFillGithub, AiFillHeart, AiFillHome } from "react-icons/ai";
 import { FaBloggerB } from "react-icons/fa";
 import { useAtom } from "jotai";
 import { cursorAtom } from "../states/cursorAtom";
+import { useNavigate } from "react-router-dom";
 
-interface MenuIcon {
+interface MenuIconProps {
   isOpenMenu: boolean;
 }
 
@@ -14,6 +15,7 @@ export const Menu = () => {
   const [isOpenMenu, setOpenMenu] = useState(false);
   const [, setCursorColor] = useAtom(cursorAtom);
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -45,28 +47,28 @@ export const Menu = () => {
       </MenuIcon>
       {isOpenMenu && (
         <MenuContent>
-          <div className="menu-item">
+          <div className="menu-item" onClick={() => navigate("/")}>
             <AiFillHome />
           </div>
-          <div className="menu-item">
+          <div className="menu-item" onClick={() => navigate("/like")}>
             <AiFillHeart />
           </div>
           <div
             className="menu-item"
-            onClick={() =>
-              window.open("https://github.com/thsuekfk2", "_blank")
-            }
+            onClick={() => {
+              window.open("https://github.com/thsuekfk2", "_blank");
+            }}
           >
             <AiFillGithub />
           </div>
           <div
             className="menu-item"
-            onClick={() =>
+            onClick={() => {
               window.open(
                 "https://hyebin-development-blog.tistory.com/",
                 "_blank"
-              )
-            }
+              );
+            }}
           >
             <FaBloggerB />
           </div>
@@ -76,9 +78,9 @@ export const Menu = () => {
   );
 };
 
-const MenuIcon = styled.div<MenuIcon>`
+const MenuIcon = styled.div<MenuIconProps>`
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   right: 0;
   top: 0;
   .hamburger-menu {
@@ -131,7 +133,7 @@ const MenuContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  z-index: 1;
+  z-index: 2;
   right: 20px;
   top: 80px;
   width: 60px;
@@ -141,6 +143,7 @@ const MenuContent = styled.div`
   border-radius: 10px;
   opacity: 0.7;
   animation: ${textFade} 0.5s linear alternate;
+  backdrop-filter: brightness(1.1) blur(20px);
   .menu-item {
     cursor: pointer;
     width: 90%;
