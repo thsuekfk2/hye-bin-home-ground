@@ -40,8 +40,9 @@ export const CustomCursor = () => {
 };
 
 const CursorWrap = styled.div<cursorAtomProps>`
-  z-index: 1;
+  z-index: 2;
   background-color: ${(props) => props.cursorColor.color};
+  color: ${(props) => props.cursorColor.textColor ?? "black"};
   width: ${(props) => props.cursorColor.size + "px" ?? "32px"};
   height: ${(props) => props.cursorColor.size + "px" ?? "32px"};
   border-radius: 50%;

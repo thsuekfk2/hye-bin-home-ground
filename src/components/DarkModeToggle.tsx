@@ -25,7 +25,7 @@ const Total = styled.div<DarkModeToggleProps>`
     box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.2);
     padding: 8px;
     border-radius: 50%;
-    z-index: 1;
+    z-index: 2;
     cursor: pointer;
     svg {
       width: 24px;

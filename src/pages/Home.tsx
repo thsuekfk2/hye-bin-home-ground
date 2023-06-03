@@ -1,7 +1,7 @@
 import { Main } from "../components/main/Main";
 import { Intro } from "../components/intro/Intro";
 import { Project } from "../components/project/Project";
-import { Footer } from "../components/Footer/Footer";
+import { Footer } from "../components/Footer";
 import { ScrollProgressbar } from "../components/ScrollProgressbar";
 
 export const Home = () => {
