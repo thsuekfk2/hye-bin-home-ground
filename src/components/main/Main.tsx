@@ -1,9 +1,9 @@
 import { keyframes, useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useEffect, useRef, useState } from "react";
-import { Logo3DImage } from "../Logo3DImage";
+import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { cursorAtom } from "../../states/cursorAtom";
+import { darkModeAtom } from "../../states/darkModeAtom";
 
 interface LogoProps {
   fontSize: number;
@@ -12,6 +12,8 @@ export const Main = () => {
   let prevScrollPosition = window.pageYOffset;
   const [fontSize, setFontSize] = useState(60);
   const [, setCursorColor] = useAtom(cursorAtom);
+  const [isDarkMode] = useAtom(darkModeAtom);
+
   const theme = useTheme();
 
   const handleScroll = () => {
@@ -49,32 +51,32 @@ export const Main = () => {
       <Wrap>
         <Logo3DImage />
       </Wrap>
-      <Logo fontSize={fontSize}>
+        <Logo fontSize={fontSize}>
         <p
-          onMouseMove={() =>
-            setCursorColor((prev) => ({
-              ...prev,
+            onMouseMove={() =>
+              setCursorColor((prev) => ({
+                ...prev,
               color: theme.convertColor,
-              size: 100,
-            }))
-          }
-          onMouseLeave={() =>
-            setCursorColor((prev) => ({
-              ...prev,
+                size: 100,
+              }))
+            }
+            onMouseLeave={() =>
+              setCursorColor((prev) => ({
+                ...prev,
               color: theme.convertColor,
-              size: 16,
-            }))
-          }
-        >
+                size: 16,
+              }))
+            }
+          >
           FRONTEND
-          <br />
+            <br />
           개발자
-          <br />
-          <div>
-            <span>이혜빈</span>입니다
-          </div>
+            <br />
+            <div>
+              <span>이혜빈</span>입니다
+            </div>
         </p>
-      </Logo>
+        </Logo>
     </>
   );
 };

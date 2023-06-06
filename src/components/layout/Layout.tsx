@@ -1,21 +1,18 @@
-import { useState } from "react";
 import { Emoji } from "../Emoji";
 import { Menu } from "../Menu";
 import { ThemeProvider } from "@emotion/react";
 import { DarkModeToggle } from "../DarkModeToggle";
 import { darkTheme, lightTheme } from "../../../styles/theme";
+import { useAtom } from "jotai";
+import { darkModeAtom } from "../../states/darkModeAtom";
 
 export const Layout = ({ children }: any) => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const handleTheme = () => {
-    setDarkMode((prev) => !prev);
-  };
+  const [isDarkMode, setDarkMode] = useAtom(darkModeAtom);
 
   return (
     <>
-      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        <DarkModeToggle handleTheme={handleTheme} darkMode={darkMode} />
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <DarkModeToggle setDarkMode={setDarkMode} isDarkMode={isDarkMode} />
         <Emoji />
         <Menu />
         {children}
