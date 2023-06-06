@@ -46,7 +46,7 @@ const BubbleBox = styled.div`
   width: 110px;
   height: 40px;
   background-color: #4596e5;
-  color: ${(props) => props.theme.color};
+  color: white;
   border-radius: 40px;
   animation: ${boxFade} 0.6s linear alternate;
 `;

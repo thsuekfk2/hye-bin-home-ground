@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { useEffect, useRef, useState } from "react";
 
 export const Project = () => {
-  const [count, setCount] = useState<number | undefined>(0);
+  const [, setCount] = useState<number | undefined>(0);
   const boxRef = useRef<HTMLDivElement>(null);
 
   const marqueeText = (
@@ -74,6 +74,6 @@ const AutoScrollBox = styled.div`
   flex: 1;
   min-width: 500px;
   height: 530px;
-  background-color: #ffffff37;
+  background-color: ${(props) => props.theme.opacityBox};
   border-radius: 10px;
 `;

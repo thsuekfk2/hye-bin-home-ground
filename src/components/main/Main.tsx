@@ -48,38 +48,54 @@ export const Main = () => {
 
   return (
     <>
-      <Wrap>
-        <Logo3DImage />
-      </Wrap>
+      <Wrap
+        style={{
+          backgroundImage: !isDarkMode ? `url("./paper-texture.jpg")` : "",
+          backgroundColor: isDarkMode && "#3f5130",
+        }}
+      ></Wrap>
+      <LogoWrap>
         <Logo fontSize={fontSize}>
-        <p
+          <div
             onMouseMove={() =>
               setCursorColor((prev) => ({
                 ...prev,
-              color: theme.convertColor,
                 size: 100,
               }))
             }
             onMouseLeave={() =>
               setCursorColor((prev) => ({
                 ...prev,
-              color: theme.convertColor,
                 size: 16,
               }))
             }
           >
-          FRONTEND
+            안녕하세요
+            <HandImg src="./hand.gif" />
             <br />
-          개발자
+            FRONTEND 개발자
             <br />
             <div>
               <span>이혜빈</span>입니다
             </div>
-        </p>
+          </div>
         </Logo>
+        <MyImage src="./my.jpeg" />
+      </LogoWrap>
     </>
   );
 };
+
+const LogoWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  top: 0;
+`;
 
 const textFade = keyframes`
   0% {
@@ -95,16 +111,30 @@ const textFade = keyframes`
   }
 `;
 
+const HandImg = styled.img`
+  width: 80px;
+`;
+
+const MyImage = styled.img`
+  position: relative;
+  display: flex;
+  width: 450px;
+  min-width: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  animation: ${textFade} 2s linear alternate;
+`;
+
 const Wrap = styled.div`
   height: 100vh;
   position: sticky;
   top: 0;
-  background: #3f5130;
+  background-size: contain;
 `;
+
 const Logo = styled.div<LogoProps>`
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  width: 40%;
   z-index: 2;
   display: flex;
   flex-direction: column;

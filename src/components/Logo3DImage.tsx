@@ -72,8 +72,5 @@ const textFade = keyframes`
 
 const CanvasImage = styled.canvas`
   animation: ${textFade} 2s linear alternate;
-  position: absolute;
-  top: 120px;
-  right: 0;
   cursor: pointer;
 `;
