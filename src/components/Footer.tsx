@@ -1,16 +1,24 @@
 import styled from "@emotion/styled";
+import { RadarChart } from "./RadarChart";
+import { Logo3DImage } from "./Logo3DImage";
 
 export const Footer = () => {
-  return <Wrap></Wrap>;
+  return (
+    <Wrap>
+      <Logo3DImage />
+      <RadarChart />
+    </Wrap>
+  );
 };
 
 const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100%;
   overflow: hidden;
   position: relative;
-  background-image: ${(props) =>
-    props.theme.color === "#000"
-      ? `url("./paper-texture-dark.jpg")`
-      : `url("./paper-texture.jpg")`};
+  background-image: url("./paper-texture.jpg");
+  background-size: contain;
 `;
