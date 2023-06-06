@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useAtom } from "jotai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cursorAtom } from "../states/cursorAtom";
 import { useTheme } from "@emotion/react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
@@ -11,6 +11,14 @@ export const Like = () => {
   const [direction, setDirection] = useState(1);
   const [, setCursorColor] = useAtom(cursorAtom);
   const theme = useTheme();
+
+  useEffect(() => {
+    setCursorColor((prev) => ({
+      ...prev,
+      color: theme.convertColor,
+      textColor: theme.color,
+    }));
+  }, []);
 
   const variants = {
     enter: (direction: number) => {
@@ -78,8 +86,6 @@ export const Like = () => {
           onMouseEnter={() => {
             setCursorColor((prev) => ({
               ...prev,
-              color: theme.color,
-              textColor: theme.convertColor,
               size: 60,
               text: (
                 <BsArrowLeftCircle
@@ -102,8 +108,6 @@ export const Like = () => {
           onMouseEnter={() => {
             setCursorColor((prev) => ({
               ...prev,
-              color: theme.color,
-              textColor: theme.convertColor,
               size: 60,
               text: (
                 <BsArrowRightCircle

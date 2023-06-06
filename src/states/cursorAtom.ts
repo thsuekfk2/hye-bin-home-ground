@@ -7,4 +7,4 @@ export type CursorState = {
   text?: any;
 };
 
-export const cursorAtom = atom<CursorState>({ color: "black", size: 16 });
+export const cursorAtom = atom<CursorState>({ color: "#0c180258", size: 16 });

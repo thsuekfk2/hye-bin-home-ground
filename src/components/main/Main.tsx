@@ -35,6 +35,9 @@ export const Main = () => {
   };
 
   useEffect(() => {
+    setCursorColor(() => ({
+      color: "#0c180258",
+    }));
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);

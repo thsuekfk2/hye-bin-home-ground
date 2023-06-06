@@ -14,7 +14,6 @@ interface MenuIconProps {
 export const Menu = () => {
   const [isOpenMenu, setOpenMenu] = useState(false);
   const [, setCursorColor] = useAtom(cursorAtom);
-  const theme = useTheme();
   const navigate = useNavigate();
 
   return (
@@ -23,14 +22,12 @@ export const Menu = () => {
         onMouseEnter={() => {
           setCursorColor((prev) => ({
             ...prev,
-            color: theme.convertColor,
             size: 50,
           }));
         }}
         onMouseLeave={() => {
           setCursorColor((prev) => ({
             ...prev,
-            color: "black",
             size: 16,
           }));
         }}
@@ -141,7 +138,6 @@ const MenuContent = styled.div`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.convertColor};
   border-radius: 10px;
-  opacity: 0.7;
   animation: ${textFade} 0.5s linear alternate;
   backdrop-filter: brightness(1.1) blur(20px);
   .menu-item {
