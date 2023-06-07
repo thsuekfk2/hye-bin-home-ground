@@ -5,6 +5,7 @@ import { cursorAtom } from "../states/cursorAtom";
 import { useTheme } from "@emotion/react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { motion, AnimatePresence } from "framer-motion";
+import { Rain } from "../components/Rain";
 
 export const Like = () => {
   const [page, setPage] = useState(1);
@@ -53,6 +54,7 @@ export const Like = () => {
 
   return (
     <PageWrap>
+      <Rain />
       <LikeMenu>
         <div className="menu-icon"></div>
         <div className="menu-icon"></div>
