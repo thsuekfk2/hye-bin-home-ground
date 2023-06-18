@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { RadarChart } from "./RadarChart";
 import { Logo3DImage } from "./Logo3DImage";
+import { mq } from "../utils/mediaQuery";
 
 export const Footer = () => {
   return (
@@ -21,4 +22,8 @@ const Wrap = styled.div`
   position: relative;
   background-image: url("./paper-texture.jpg");
   background-size: contain;
+
+  ${mq[4]} {
+    flex-direction: column;
+  }
 `;

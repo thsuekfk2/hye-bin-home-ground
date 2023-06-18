@@ -1,50 +1,13 @@
-import { keyframes, useTheme } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { cursorAtom } from "../../states/cursorAtom";
 import { darkModeAtom } from "../../states/darkModeAtom";
+import { mq } from "../../utils/mediaQuery";
 
-interface LogoProps {
-  fontSize: number;
-}
 export const Main = () => {
-  let prevScrollPosition = window.pageYOffset;
-  const [fontSize, setFontSize] = useState(60);
   const [, setCursorColor] = useAtom(cursorAtom);
   const [isDarkMode] = useAtom(darkModeAtom);
-
-  const theme = useTheme();
-
-  const handleScroll = () => {
-    const currentScrollPosition = window.pageYOffset;
-
-    if (currentScrollPosition === 0) {
-      setFontSize(60);
-      return;
-    }
-    if (currentScrollPosition > 40) {
-      setFontSize(50);
-    }
-
-    if (currentScrollPosition < 40) {
-      const scrollDirection =
-        currentScrollPosition > prevScrollPosition ? "down" : "up";
-
-      setFontSize((prev) => (scrollDirection === "down" ? prev - 1 : prev + 1));
-      prevScrollPosition = currentScrollPosition;
-    }
-  };
-
-  useEffect(() => {
-    setCursorColor(() => ({
-      color: "#0c180258",
-    }));
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <>
@@ -55,7 +18,7 @@ export const Main = () => {
         }}
       ></Wrap>
       <LogoWrap>
-        <Logo fontSize={fontSize}>
+        <Logo>
           <div
             onMouseMove={() =>
               setCursorColor((prev) => ({
@@ -95,6 +58,10 @@ const LogoWrap = styled.div`
   width: 100%;
   height: 100%;
   top: 0;
+  ${mq[3]} {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const textFade = keyframes`
@@ -118,8 +85,9 @@ const HandImg = styled.img`
 const MyImage = styled.img`
   position: relative;
   display: flex;
-  width: 450px;
-  min-width: 100px;
+  width: 100%;
+  max-width: 400px;
+  min-width: 80px;
   object-fit: cover;
   border-radius: 50%;
   animation: ${textFade} 2s linear alternate;
@@ -132,7 +100,8 @@ const Wrap = styled.div`
   background-size: contain;
 `;
 
-const Logo = styled.div<LogoProps>`
+const Logo = styled.div`
+  font-size: 60px;
   position: relative;
   width: 40%;
   z-index: 2;
@@ -143,11 +112,21 @@ const Logo = styled.div<LogoProps>`
   height: 100%;
   color: ${(props) => props.theme.color};
   transition: all 0.2s;
-  opacity: ${(props) => props.fontSize == 50 && 0};
-  font-size: ${(props) => props.fontSize}px;
   font-weight: 200;
   animation: ${textFade} 2s linear alternate;
   span {
     font-weight: 700;
+  }
+  ${mq[4]} {
+    font-size: 40px;
+  }
+  ${mq[3]} {
+    width: 90%;
+    font-size: 50px;
+    height: 200px;
+    align-items: center;
+  }
+  ${mq[1]} {
+    font-size: 30px;
   }
 `;
