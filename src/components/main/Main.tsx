@@ -1,14 +1,19 @@
-import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useAtom } from "jotai";
 import { cursorAtom } from "../../states/cursorAtom";
 import { darkModeAtom } from "../../states/darkModeAtom";
 import { mq } from "../../utils/mediaQuery";
+import { TextRotator } from "../TextRotator";
 
 export const Main = () => {
   const [, setCursorColor] = useAtom(cursorAtom);
   const [isDarkMode] = useAtom(darkModeAtom);
-
+  const textArray = [
+    "FRONTEND 개발자",
+    "배우는것을 좋아하는",
+    "사용자를 생각하는",
+    "계속 성장하는",
+  ];
   return (
     <>
       <Wrap
@@ -36,7 +41,7 @@ export const Main = () => {
             안녕하세요
             <HandImg src="./hand.gif" />
             <br />
-            FRONTEND 개발자
+            <TextRotator textArray={textArray} />
             <br />
             <div>
               <span>이혜빈</span>입니다
@@ -64,20 +69,6 @@ const LogoWrap = styled.div`
   }
 `;
 
-const textFade = keyframes`
-  0% {
-    opacity: 0;
-    font-size: 100px;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    font-size: 60px;
-  }
-`;
-
 const HandImg = styled.img`
   width: 80px;
 `;
@@ -90,7 +81,6 @@ const MyImage = styled.img`
   min-width: 80px;
   object-fit: cover;
   border-radius: 50%;
-  animation: ${textFade} 2s linear alternate;
 `;
 
 const Wrap = styled.div`
@@ -108,12 +98,10 @@ const Logo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 10%;
   height: 100%;
   color: ${(props) => props.theme.color};
   transition: all 0.2s;
   font-weight: 200;
-  animation: ${textFade} 2s linear alternate;
   span {
     font-weight: 700;
   }

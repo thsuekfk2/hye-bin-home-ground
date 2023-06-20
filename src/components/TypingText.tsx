@@ -1,29 +1,27 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useRef } from "react";
 
-export const TypingText = () => {
-  const content =
-    "배우는 것에 가치를 두고\n 꾸준히 발전하는 개발자 \n 이혜빈입니다.";
+export const TypingText = ({ text }: { text: string }) => {
   const textRef = useRef<any>(null);
 
   useEffect(() => {
     let i = 0;
     let interval: any;
-    function typing() {
+    const typing = () => {
       if (textRef.current) {
-        let txt = content[i++];
+        let txt = text[i++];
         textRef.current.innerHTML += txt === "\n" ? "<br/>" : txt;
-        if (i > content.length) {
+        if (i > text.length) {
           textRef.current.textContent = "";
           i = 0;
         }
       }
-    }
+    };
     interval = setInterval(typing, 200);
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [text]);
 
   return (
     <TextBox>

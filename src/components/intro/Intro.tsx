@@ -8,7 +8,9 @@ export const Intro = () => {
       <LogoBox>
         <div className="menu-circle"></div>
         <div className="box-content">
-          <TypingText />
+          <TypingText
+            text={`배우는 것에 가치를 두고\n 꾸준히 발전하는 개발자 \n 이혜빈입니다.           `}
+          />
         </div>
       </LogoBox>
     </Wrap>
