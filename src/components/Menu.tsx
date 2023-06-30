@@ -1,8 +1,7 @@
-import { keyframes, useTheme } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { AiFillGithub, AiFillHeart, AiFillHome } from "react-icons/ai";
-import { FaBloggerB } from "react-icons/fa";
+import { AiFillFolderOpen, AiFillHeart, AiFillHome } from "react-icons/ai";
 import { useAtom } from "jotai";
 import { cursorAtom } from "../states/cursorAtom";
 import { useNavigate } from "react-router-dom";
@@ -50,24 +49,8 @@ export const Menu = () => {
           <div className="menu-item" onClick={() => navigate("/like")}>
             <AiFillHeart />
           </div>
-          <div
-            className="menu-item"
-            onClick={() => {
-              window.open("https://github.com/thsuekfk2", "_blank");
-            }}
-          >
-            <AiFillGithub />
-          </div>
-          <div
-            className="menu-item"
-            onClick={() => {
-              window.open(
-                "https://hyebin-development-blog.tistory.com/",
-                "_blank"
-              );
-            }}
-          >
-            <FaBloggerB />
+          <div className="menu-item" onClick={() => navigate("/project")}>
+            <AiFillFolderOpen />
           </div>
         </MenuContent>
       )}

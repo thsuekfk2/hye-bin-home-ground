@@ -1,8 +1,7 @@
-import { Main } from "../components/main/Main";
-import { Intro } from "../components/intro/Intro";
-import { Project } from "../components/project/Project";
-import { Footer } from "../components/Footer";
+import { Main } from "../components/Main";
+import { Intro } from "../components/Intro";
 import { ScrollProgressbar } from "../components/ScrollProgressbar";
+import { PostBox } from "../components/PostBox";
 
 export const Home = () => {
   return (
@@ -10,8 +9,7 @@ export const Home = () => {
       <ScrollProgressbar />
       <Main />
       <Intro />
-      <Project />
-      <Footer />
+      <PostBox />
     </>
   );
 };
