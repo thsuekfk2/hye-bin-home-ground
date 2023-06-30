@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { TypingText } from "../TypingText";
+import { TypingText } from "./TypingText";
 
 export const Intro = () => {
   return (
@@ -9,7 +9,7 @@ export const Intro = () => {
         <div className="menu-circle"></div>
         <div className="box-content">
           <TypingText
-            text={`배우는 것에 가치를 두고\n 꾸준히 발전하는 개발자 \n 이혜빈입니다.           `}
+            text={`<hb> \n 코드 앞에서는 겸손하자 \n 매일의 점을 찍고 나아가 점들을 연결하자 \n </hb>`}
           />
         </div>
       </LogoBox>
@@ -18,16 +18,14 @@ export const Intro = () => {
 };
 
 const textFade = keyframes`
-
   100% {
-    transform: translateY(-200px);
+    transform: translateY(-70px);
   }
 `;
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -40,14 +38,14 @@ const LogoBox = styled.div`
   position: relative;
   margin: 0 25px;
   width: 100%;
-  height: 80%;
+  height: 350px;
   max-width: 650px;
   max-height: 700px;
   color: ${(props) => props.theme.color};
   font-size: 80px;
   font-weight: 700;
-  transition: all 2s;
-  animation: ${textFade} 4s alternate forwards;
+  transition: all 1s;
+  animation: ${textFade} 2.3s alternate forwards;
   background-color: ${(props) => props.theme.opacityBox};
   border-radius: 20px;
   backdrop-filter: blur(2px);
@@ -65,10 +63,10 @@ const LogoBox = styled.div`
   .box-content {
     display: flex;
     justify-content: center;
-    padding-top: 100px;
+    padding-top: 60px;
     background-color: #212125;
     width: 90%;
-    height: 70%;
+    height: 200px;
     margin: 0 auto;
   }
 `;

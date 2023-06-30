@@ -1,10 +1,10 @@
-import { Emoji } from "../Emoji";
-import { Menu } from "../Menu";
+import { Emoji } from "./Emoji";
+import { Menu } from "./Menu";
 import { ThemeProvider } from "@emotion/react";
-import { DarkModeToggle } from "../DarkModeToggle";
-import { darkTheme, lightTheme } from "../../../styles/theme";
+import { DarkModeToggle } from "./DarkModeToggle";
+import { darkTheme, lightTheme } from "../../styles/theme";
 import { useAtom } from "jotai";
-import { darkModeAtom } from "../../states/darkModeAtom";
+import { darkModeAtom } from "../states/darkModeAtom";
 
 export const Layout = ({ children }: any) => {
   const [isDarkMode, setDarkMode] = useAtom(darkModeAtom);
