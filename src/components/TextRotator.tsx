@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import React, { useState, useEffect } from "react";
 
 export const TextRotator = ({ textArray }: { textArray: Array<string> }) => {
@@ -13,5 +14,10 @@ export const TextRotator = ({ textArray }: { textArray: Array<string> }) => {
     };
   }, [textArray.length]);
 
-  return <span>{textArray[currentIndex]}</span>;
+  return <Wrap>{textArray[currentIndex]}</Wrap>;
 };
+
+const Wrap = styled.div`
+  position: absolute;
+  font-weight: 700;
+`;
