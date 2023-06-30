@@ -7,7 +7,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   color: "#fff",
-  convertColor: "#000",
+  convertColor: "rgb(35, 35, 38)",
   background: "rgba(255, 255, 255, 0.5)",
   opacityBox: "rgba(255, 255, 255, 0.5)",
 };
