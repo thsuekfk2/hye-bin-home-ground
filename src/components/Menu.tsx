@@ -5,6 +5,7 @@ import { AiFillFolderOpen, AiFillHeart, AiFillHome } from "react-icons/ai";
 import { useAtom } from "jotai";
 import { cursorAtom } from "../states/cursorAtom";
 import { useNavigate } from "react-router-dom";
+import { mq } from "../utils/mediaQuery";
 
 interface MenuIconProps {
   isOpenMenu: boolean;
@@ -71,6 +72,10 @@ const MenuIcon = styled.div<MenuIconProps>`
     height: 40px;
     width: 40px;
     cursor: pointer;
+    ${mq[3]} {
+      height: 33px;
+      width: 33px;
+    }
   }
   .bar-top,
   .bar-middle,
@@ -117,12 +122,15 @@ const MenuContent = styled.div`
   right: 20px;
   top: 80px;
   width: 60px;
-  height: 400px;
+  height: 250px;
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.convertColor};
   border-radius: 10px;
   animation: ${textFade} 0.5s linear alternate;
   backdrop-filter: brightness(1.1) blur(20px);
+  ${mq[3]} {
+    width: 40px;
+  }
   .menu-item {
     cursor: pointer;
     width: 90%;

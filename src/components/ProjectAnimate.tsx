@@ -22,11 +22,11 @@ const BoxWrap = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
   gap: 20px;
   padding: 50px 0;
   white-space: nowrap;
   will-change: transform;
+  overflow-x: auto;
 `;
 
 const AutoScrollBox = styled.div`
