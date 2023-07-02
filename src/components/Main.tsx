@@ -25,10 +25,10 @@ export const Main = () => {
       <Wrap
         style={{
           backgroundImage: !isDarkMode ? `url("./paper-texture.jpg")` : "",
-          backgroundColor: isDarkMode ? "#3f5130" : "",
+          backgroundColor: isDarkMode ? "rgb(40 53 30)" : "",
         }}
       ></Wrap>
-      <LogoWrap>
+      <LogoWrap id="about">
         <Logo>
           <div
             onMouseMove={() =>
@@ -54,6 +54,13 @@ export const Main = () => {
               <span>이혜빈</span>입니다
             </div>
           </div>
+          <LogoSubText>
+            주니어 프론트엔드 개발자 이혜빈 입니다. <br />
+            리액트를 주요 기술 스택으로 다루고 있으며 빠르게 발전하는 프론트엔드
+            개발 생태계 속에서 안정적으로 동작할 수 있고 사용자에게 다시 찾고
+            싶은 디자인 시스템과 UI/UX를 제공하기 위해 고민합니다.
+            <br />
+          </LogoSubText>
           <LinkWrap isDarkMode={isDarkMode}>
             <h1
               className="menu-item"
@@ -105,12 +112,18 @@ const LogoWrap = styled.div`
   position: absolute;
   flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: 90%;
   top: 0;
   ${mq[3]} {
     flex-direction: column-reverse;
     justify-content: center;
   }
+`;
+
+const LogoSubText = styled.div`
+  font-size: 17px;
+  margin: 20px 0 20px 0;
+  max-width: 500px;
 `;
 
 const HandImg = styled.img`
@@ -128,7 +141,6 @@ const LinkWrap = styled.div<LinkWrapProps>`
   bottom: 30vh;
   width: 100%;
   left: 0;
-  margin-top: 30px;
   font-size: 30px;
   color: ${(props) => props.theme.color};
   font-family: "GmarketSansLite";
@@ -137,7 +149,7 @@ const LinkWrap = styled.div<LinkWrapProps>`
 
   h1 {
     font-family: "GmarketSansBold";
-    font-size: 20px;
+    font-size: 16px;
     width: 100%;
     cursor: pointer;
     line-height: 1.2;
@@ -185,7 +197,7 @@ const MyImage = styled.img`
   }
   ${mq[4]} {
     width: 40vw;
-    bottom: 50px;
+    bottom: 7px;
   }
 `;
 
