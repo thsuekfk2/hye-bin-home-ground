@@ -3,10 +3,9 @@ import { ProjectAnimate } from "../components/ProjectAnimate";
 
 export const Project = () => {
   return (
-    <Wrap>
+    <Wrap id="project">
       <Title>
-        <span>My Project </span>
-        <img src="./dinosaur-trex.gif"></img>
+        <span>My Project</span>
       </Title>
       <ProjectAnimate />
     </Wrap>
@@ -25,6 +24,7 @@ const Wrap = styled.div`
 `;
 
 const Title = styled.div`
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;

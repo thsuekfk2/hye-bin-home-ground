@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useAtomValue } from "jotai";
 import { darkModeAtom } from "../states/darkModeAtom";
 import { mq } from "../utils/mediaQuery";
+import { Emoji } from "./Emoji";
 
 type PostBoxProps = {
   isDarkMode: object;
@@ -19,11 +20,14 @@ export const PostBox = () => {
       transition={{
         duration: 0.4,
       }}
+      id="memory"
     >
       <PostBoxWrap isDarkMode={isDarkMode}>
         <PostBoxContents isDarkMode={isDarkMode}>
-          <div className="post-title">회고록</div>
-          <img src="./timmy.gif"></img>
+          <div className="post-title">
+            <Emoji />
+            회고록
+          </div>
           <div className="item-3-row">
             <div className="item-box">coming soon</div>
             <div className="item-box">coming soon</div>
@@ -47,8 +51,9 @@ const PostBoxWrap = styled.div<PostBoxProps>`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: ${(props) => (props.isDarkMode ? "#012761" : "#bac2e8")};
-  padding: 100px 0 100px 0;
+  background-color: ${(props) => props.theme.convertColor};
+  padding: 50px 0 100px 0;
+  overflow: hidden;
 `;
 
 const PostBoxContents = styled.div<PostBoxProps>`
@@ -65,11 +70,13 @@ const PostBoxContents = styled.div<PostBoxProps>`
   }
 
   .post-title {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     font-size: 30px;
     padding-bottom: 50px;
-  }
-  img {
-    width: 100px;
   }
   .item-3-row {
     width: 100%;
@@ -91,7 +98,7 @@ const PostBoxContents = styled.div<PostBoxProps>`
   }
   .item-box {
     width: 100%;
-
+    box-shadow: 0 0.3125rem 0.875rem 0 rgba(129, 129, 129, 0.2);
     display: flex;
     align-items: center;
     background-color: #ffffff2d;
@@ -99,12 +106,12 @@ const PostBoxContents = styled.div<PostBoxProps>`
     justify-content: center;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.8);
-    color: #002761;
+    color: #000000;
     border-radius: 28px;
     &:hover {
       filter: blur(0);
       background-color: ${(props) =>
-        props.isDarkMode ? "#b3d1ff" : "#c7d1ff"};
+        props.isDarkMode ? "#e4ffce64" : "#c7d1ff5f"};
     }
   }
 `;

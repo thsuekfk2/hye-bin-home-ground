@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export const TypingText = ({ text }: { text: string }) => {
   const textRef = useRef<any>(null);
@@ -33,7 +33,7 @@ export const TypingText = ({ text }: { text: string }) => {
 
 const TextBox = styled.div`
   text-align: center;
-  font-size: 20px;
+  font-size: 17px;
   color: #ffffff;
   font-weight: 500;
   line-height: 30px;
