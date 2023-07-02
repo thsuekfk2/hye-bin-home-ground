@@ -1,5 +1,3 @@
-import { Emoji } from "./Emoji";
-import { Menu } from "./Menu";
 import { ThemeProvider } from "@emotion/react";
 import { DarkModeToggle } from "./DarkModeToggle";
 import { darkTheme, lightTheme } from "../../styles/theme";
@@ -13,8 +11,6 @@ export const Layout = ({ children }: any) => {
     <>
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <DarkModeToggle setDarkMode={setDarkMode} isDarkMode={isDarkMode} />
-        <Emoji />
-        <Menu />
         {children}
       </ThemeProvider>
     </>
