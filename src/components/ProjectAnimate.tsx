@@ -1,10 +1,51 @@
-import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { useEffect, useRef, useState } from "react";
 
 export const ProjectAnimate = () => {
+  const [, setCount] = useState<number | undefined>(0);
+  const boxRef = useRef<HTMLDivElement>(null);
+
+  const marqueeText = (
+    count: number | undefined,
+    element: React.RefObject<HTMLDivElement>,
+    direction: number
+  ) => {
+    if (element?.current && count) {
+      if (count > element.current.scrollWidth / 2) {
+        element.current.style.transform = `translate3d(0, 0, 0)`;
+        count = 0;
+      }
+      element.current.style.transform = `translate3d(${
+        direction * count
+      }px, 0, 0)`;
+
+      return count;
+    }
+  };
+
+  const animate = () => {
+    setCount((prev: number | undefined) =>
+      marqueeText((prev as number) + 0.5, boxRef, -1)
+    );
+    window.requestAnimationFrame(animate);
+  };
+
+  const scrollHandler = () => {
+    setCount((prev: number | undefined) => (prev as number) + 3);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+    animate();
+
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
   return (
     <Wrap>
-      <BoxWrap>
+      <BoxWrap ref={boxRef}>
         <AutoScrollBox>coming soon</AutoScrollBox>
         <AutoScrollBox>coming soon</AutoScrollBox>
         <AutoScrollBox>coming soon</AutoScrollBox>
@@ -26,7 +67,6 @@ const BoxWrap = styled.div`
   padding: 50px 0;
   white-space: nowrap;
   will-change: transform;
-  overflow-x: auto;
 `;
 
 const AutoScrollBox = styled.div`
