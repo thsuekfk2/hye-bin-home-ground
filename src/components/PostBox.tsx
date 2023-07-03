@@ -63,7 +63,7 @@ const PostBoxContents = styled.div<PostBoxProps>`
   align-items: center;
   flex-direction: column;
   color: ${(props) => props.theme.color};
-  gap: 10px;
+  gap: 20px;
   ${mq[3]} {
     width: 95%;
     max-width: 100%;
@@ -97,6 +97,7 @@ const PostBoxContents = styled.div<PostBoxProps>`
     gap: 1%;
   }
   .item-box {
+    position: relative;
     width: 100%;
     box-shadow: 0 0.3125rem 0.875rem 0 rgba(129, 129, 129, 0.2);
     display: flex;
@@ -108,10 +109,13 @@ const PostBoxContents = styled.div<PostBoxProps>`
     background-color: rgba(255, 255, 255, 0.8);
     color: #000000;
     border-radius: 28px;
+    top: 0;
+    transition: top 0.4s;
     &:hover {
       filter: blur(0);
       background-color: ${(props) =>
         props.isDarkMode ? "#e4ffce64" : "#c7d1ff5f"};
+      top: -10px;
     }
   }
 `;
