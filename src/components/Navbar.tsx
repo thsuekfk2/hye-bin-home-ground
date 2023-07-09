@@ -1,21 +1,34 @@
 import styled from "@emotion/styled";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const pathName = location.pathname.split("/")[1];
+
   return (
     <NavbarWrap>
       <MenuLogo>
-        <div className="menu-item"> Hyebin's World </div>
+        <div className="menu-item" onClick={() => navigate("/")}>
+          Hyebin's World
+        </div>
       </MenuLogo>
       <MenuWrap>
-        <a className="menu-item" href="#about">
-          내 소개
-        </a>
-        <a className="menu-item" href="#project">
-          프로젝트
-        </a>
-        <a className="menu-item" href="#memory">
-          회고록
-        </a>
+        {pathName === "post" ? (
+          <a className="menu-item">POST</a>
+        ) : (
+          <>
+            <a className="menu-item" href="#about">
+              내 소개
+            </a>
+            <a className="menu-item" href="#project">
+              프로젝트
+            </a>
+            <a className="menu-item" href="#memory">
+              회고록
+            </a>
+          </>
+        )}
       </MenuWrap>
     </NavbarWrap>
   );
@@ -50,7 +63,8 @@ const MenuWrap = styled.div`
   display: flex;
   height: 100%;
   gap: 10%;
-  justify-content: center;
+  padding-right: 7%;
+  justify-content: end;
   align-items: center;
   .menu-item {
     text-decoration: none;

@@ -4,6 +4,7 @@ import { useAtomValue } from "jotai";
 import { darkModeAtom } from "../states/darkModeAtom";
 import { mq } from "../utils/mediaQuery";
 import { Emoji } from "./Emoji";
+import { useNavigate } from "react-router-dom";
 
 type PostBoxProps = {
   isDarkMode: object;
@@ -11,6 +12,7 @@ type PostBoxProps = {
 
 export const PostBox = () => {
   const isDarkMode = useAtomValue(darkModeAtom);
+  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -28,17 +30,21 @@ export const PostBox = () => {
             <Emoji />
             회고록
           </div>
-          <div className="item-3-row">
-            <div className="item-box">coming soon</div>
+          {/* <div className="item-3-row">
+            <div className="item-box">
+              프론트엔드 1년 차 회고록
+            </div>
             <div className="item-box">coming soon</div>
             <div className="item-box">coming soon</div>
           </div>
           <div className="item-2-row">
             <div className="item-box">coming soon</div>
             <div className="item-box">coming soon</div>
-          </div>
+          </div> */}
           <div className="item-1-row">
-            <div className="item-box">coming soon</div>
+            <div className="item-box" onClick={() => navigate(`/post/1`)}>
+              프론트엔드 1년 차 회고록
+            </div>
           </div>
         </PostBoxContents>
       </PostBoxWrap>
@@ -98,6 +104,7 @@ const PostBoxContents = styled.div<PostBoxProps>`
   }
   .item-box {
     position: relative;
+    height: 100px;
     width: 100%;
     box-shadow: 0 0.3125rem 0.875rem 0 rgba(129, 129, 129, 0.2);
     display: flex;
@@ -111,6 +118,8 @@ const PostBoxContents = styled.div<PostBoxProps>`
     border-radius: 28px;
     top: 0;
     transition: top 0.4s;
+    text-align: center;
+    word-break: keep-all;
     &:hover {
       filter: blur(0);
       background-color: ${(props) =>
