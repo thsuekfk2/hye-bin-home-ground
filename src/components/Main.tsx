@@ -134,8 +134,6 @@ const HandImg = styled.img`
 `;
 
 const LinkWrap = styled.div<LinkWrapProps>`
-  @import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
-
   display: flex;
   flex-direction: column;
   bottom: 30vh;

@@ -24,7 +24,7 @@ export const RadarChart = () => {
     labels: ["React", "Typescript", "Next.js", "JavaScript", "css"],
     datasets: [
       {
-        label: "SKILL",
+        label: "none",
         data: [7, 6, 5, 8, 8],
         backgroundColor: "#3f51304d",
         borderColor: "#3F5130",
@@ -43,7 +43,7 @@ export const RadarChart = () => {
       r: {
         pointLabels: {
           font: {
-            size: 15,
+            size: 17,
           },
         },
         grid: {
@@ -60,7 +60,7 @@ export const RadarChart = () => {
     },
     plugins: {
       legend: {
-        display: true,
+        display: false,
         labels: {
           font: {
             size: 18,
