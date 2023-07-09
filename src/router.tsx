@@ -4,6 +4,7 @@ import { Like } from "./pages/Like";
 import { Router as RemixRouter } from "@remix-run/router/dist/router";
 import { Layout } from "./components/Layout";
 import { Project } from "./pages/Project";
+import { NotFound } from "./pages/NotFound";
 
 const routerData = [
   {
@@ -17,6 +18,10 @@ const routerData = [
   {
     path: "/project",
     element: <Project />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ];
 
