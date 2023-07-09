@@ -19,6 +19,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "react-markdown": "^8.0.7",
     "react-router-dom": "^6.10.0",
     "three": "^0.152.2",
     "three-gltf-loader": "^1.111.0"
